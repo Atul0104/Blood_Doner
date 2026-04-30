@@ -1,0 +1,457 @@
+/* Wrapper for Full Viewport Height */
+.register-wrapper {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Main Container */
+.register-container {
+  width: 95%;
+  max-width: 1200px;
+  height: 90vh;
+  max-height: 650px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Left Side: Image Section */
+.info-side {
+  background: linear-gradient(135deg, var(--burgundy), var(--burgundy-60)), 
+              url('/bloodvertical copy.avif') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 30px 30px;
+  text-align: center;
+}
+
+.info-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--burgundy-60);
+}
+
+.info-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+}
+
+.info-content h1 {
+  font-size: 2.2rem;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.info-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Right Side: Form Section */
+.form-side {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.form-side::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-side::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.form-side::-webkit-scrollbar-thumb {
+  background: var(--burgundy-60);
+  border-radius: 3px;
+}
+
+.form-side::-webkit-scrollbar-thumb:hover {
+  background: var(--burgundy-90);
+}
+
+/* Form Card Wrapper */
+.form-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.form-card h2 {
+  color: var(--off-black);
+  margin: 0 0 6px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.form-subtitle {
+  color: var(--muted);
+  margin: 0 0 12px 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Form Validation Summary - Compact */
+.form-validation-summary {
+  background: linear-gradient(135deg, var(--nude-12), var(--rose-18));
+  border-left: 4px solid var(--burgundy);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(75,29,63,0.12);
+}
+
+.summary-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.summary-text {
+  color: var(--burgundy);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Form */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* Form Grid - 2 Columns */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 10px;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form label {
+  color: var(--off-black);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.required {
+  color: var(--rose-smoke);
+  font-weight: 700;
+}
+
+/* Form Inputs and Selects */
+.register-form input,
+.register-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--off-black);
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.register-form input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 0.85rem;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  outline: none;
+  border-color: var(--burgundy);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px var(--burgundy-60);
+}
+
+/* Invalid Field State */
+.register-form input.is-invalid,
+.register-form select.is-invalid {
+  border-color: var(--burgundy);
+  background: var(--rose-18);
+}
+
+.register-form input.is-invalid:focus,
+.register-form select.is-invalid:focus {
+  box-shadow: 0 0 8px var(--burgundy-60);
+}
+
+/* Error Text */
+.error-text {
+  font-size: 0.75rem;
+  color: var(--burgundy);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.register-btn {
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* Button States */
+.register-btn.btn-disabled {
+  background: linear-gradient(135deg, var(--rose-smoke), var(--nude));
+  color: rgba(27, 27, 27, 0.55);
+  cursor: not-allowed;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  opacity: 0.85;
+}
+
+.register-btn.btn-enabled {
+  background: linear-gradient(135deg, var(--burgundy), var(--burgundy-90));
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(75,29,63,0.28);
+}
+
+.register-btn.btn-enabled:hover {
+  background: linear-gradient(135deg, var(--burgundy-60), var(--burgundy-90));
+  box-shadow: 0 8px 20px rgba(75,29,63,0.32);
+  transform: translateY(-2px);
+}
+
+.register-btn.btn-enabled:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px var(--burgundy-60);
+}
+
+.register-btn.btn-submitting {
+  background: linear-gradient(135deg, var(--burgundy-90), var(--burgundy));
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+.btn-text,
+.btn-text-submitting {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+/* Loading Spinner */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form Footer */
+.form-footer {
+  text-align: center;
+  color: rgba(27,27,27,0.72);
+  font-size: 0.8rem;
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .register-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
+  }
+
+  .info-side {
+    min-height: 200px;
+    padding: 25px;
+  }
+
+  .form-side {
+    padding: 20px 25px;
+  }
+
+  .info-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .form-card h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding: 10px;
+  }
+
+  .register-container {
+    height: auto;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .info-side {
+    min-height: 150px;
+    padding: 20px;
+  }
+
+  .info-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .info-content p {
+    font-size: 0.9rem;
+  }
+
+  .form-side {
+    padding: 18px 20px;
+  }
+
+  .form-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+
+  .form-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+
+  .register-form label {
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+
+  .register-form input,
+  .register-form select {
+    font-size: 0.8rem;
+    padding: 7px 9px;
+  }
+
+  .register-btn {
+    font-size: 0.9rem;
+    padding: 9px 14px;
+    min-height: 38px;
+  }
+
+  .form-validation-summary {
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+  }
+
+  .error-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .register-form {
+    gap: 4px;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .register-form input,
+  .register-form select {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .register-form label {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+
+  .register-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    min-height: 36px;
+    margin-top: 4px;
+  }
+}

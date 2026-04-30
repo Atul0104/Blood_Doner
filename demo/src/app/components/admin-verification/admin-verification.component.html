@@ -1,0 +1,70 @@
+<div class="admin-panel">
+  <div class="admin-header">
+    <h1>🔐 Admin Verification Panel</h1>
+    <p class="subtitle">Manage Blood Donation Certificate Verification</p>
+  </div>
+
+  <div *ngIf="verificationMessage" class="success-message">
+    {{ verificationMessage }}
+  </div>
+
+  <div class="stats-container">
+    <div class="stat-card">
+      <h3>Total Donors</h3>
+      <p class="stat-number">{{ donors.length }}</p>
+    </div>
+    <div class="stat-card verified">
+      <h3>Verified</h3>
+      <p class="stat-number">{{ getVerifiedCount() }}</p>
+    </div>
+    <div class="stat-card pending">
+      <h3>Pending</h3>
+      <p class="stat-number">{{ getUnverifiedCount() }}</p>
+    </div>
+  </div>
+
+  <div class="donors-list">
+    <h2>Donors Awaiting Verification</h2>
+    <div class="table-wrapper">
+      <table class="donors-table">
+        <thead>
+          <tr>
+            <th>Donor Name</th>
+            <th>Blood Group</th>
+            <th>Donation Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let donor of donors" [class.verified-row]="donor.verified">
+            <td>{{ donor.donorName }}</td>
+            <td>{{ donor.bloodGroup }}</td>
+            <td>{{ donor.donationDate | date:'MMM dd, yyyy' }}</td>
+            <td>
+              <span 
+                [class.verified]="donor.verified"
+                [class.pending]="!donor.verified">
+                {{ donor.verified ? 'Verified ✓' : 'Pending ⏳' }}
+              </span>
+            </td>
+            <td>
+              <button 
+                *ngIf="!donor.verified" 
+                (click)="verifyDonor(donor.donorId)">
+                Verify & Approve
+              </button>
+              <button *ngIf="donor.verified" disabled>
+                ✓ Verified
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="donors.length === 0" class="empty-state">
+    <p>No donors found. Start adding donors to the system.</p>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+  body {
+    background: linear-gradient(135deg, var(--burgundy), var(--burgundy-90));
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .team-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Left Info Side */
+  .about-section {
+    flex: 1;
+    background: url('/Join.png') center/cover no-repeat;
+    position: relative;
+    min-height: 450px;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .about-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--burgundy-60);
+  }
+
+  .about-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .mission {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  /* Right Form Side */
+  .form-section {
+    flex: 1;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .form-section h2 {
+    color: var(--off-black);
+    margin-bottom: 20px;
+  }
+
+  .join-form label {
+    display: block;
+    margin-bottom: 15px;
+    color: black;
+    font-weight: 500;
+  }
+
+  .join-form input,
+  .join-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    margin-top: 5px;
+  }
+
+  .join-form input::placeholder,
+  .join-form textarea::placeholder {
+    color: black;
+  }
+
+  .join-form button {
+    margin-top: 10px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--burgundy), var(--burgundy-90));
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .join-form button:hover {
+    background: linear-gradient(90deg, var(--burgundy-90), var(--burgundy));
+    transform: scale(1.05);
+  }
+
+  .thank-you {
+    margin-top: 15px;
+    color: lightgreen;
+    font-weight: bold;
+  }
+
+  .text-danger {
+    font-size: 0.85rem;
+    color: var(--rose-smoke);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .team-container {
+      flex-direction: column;
+    }
+    .about-section {
+      min-height: 250px;
+    }
+  }

@@ -1,0 +1,17 @@
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: #fff;
+}
+
+.register-form .form-group {
+  margin-bottom: 15px;
+}
+
+.alert {
+  text-align: center;
+  font-weight: bold;
+}

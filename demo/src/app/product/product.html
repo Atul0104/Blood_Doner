@@ -1,0 +1,5 @@
+<div *ngFor="let card of cards">
+    <h2>{{card.Title}}</h2>
+    <p>{{card.content}}</p>
+    <button (click)="viewDetails(card.id)">view Detail</button>
+</div>

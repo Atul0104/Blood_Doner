@@ -1,0 +1,51 @@
+<div class="volunteer-container">
+  <h2 class="text-center mb-3">🙌 Volunteer with Us</h2>
+  <p class="text-center mb-4">
+    Support blood donation drives, camps, and events in your community.
+  </p>
+
+  <form [formGroup]="volunteerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-3">
+      <label>Full Name</label>
+      <input type="text" formControlName="fullName" class="form-control" placeholder="Your name" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Age</label>
+      <input type="number" formControlName="age" class="form-control" placeholder="Your age" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" placeholder="Your email" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Phone Number</label>
+      <input type="tel" formControlName="phone" class="form-control" placeholder="10-digit mobile number" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>City / Location</label>
+      <input type="text" formControlName="city" class="form-control" placeholder="Your city or area" />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Availability</label>
+      <select class="form-control" formControlName="availability">
+        <option value="" disabled>Select availability</option>
+        <option>Weekdays</option>
+        <option>Weekends</option>
+        <option>Both</option>
+      </select>
+    </div>
+
+    <div class="form-group mb-4">
+      <label>Why are you interested?</label>
+      <textarea rows="3" formControlName="interest" class="form-control" placeholder="Tell us why you'd like to help..."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-danger w-100">🚀 Register as Volunteer</button>
+  </form>
+</div>
+

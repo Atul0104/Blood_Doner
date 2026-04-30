@@ -1,0 +1,44 @@
+<section class="contact-section container my-5 p-5 rounded-4 shadow-lg" style="background: linear-gradient(135deg, var(--burgundy), var(--off-black)); color: var(--nude);">
+  <h2 class="text-center mb-4 display-5 fw-bold">Drop of Hope</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h5>📍 Address</h5>
+      <p>Drop of Hope Foundation,<br>123 Blood Drive Lane,<br>Pune, Maharashtra, India - 411001</p>
+
+      <h5>📞 Phone</h5>
+      <p>+91 8483843981</p>
+
+      <h5>📧 Email</h5>
+      <p>dropofhope&#64;gmail.com</p>
+    </div>
+
+    <div class="col-md-6">
+      <h5>📬 Send Us a Message</h5>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name" formControlName="name">
+          <div class="text-warning" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+            Name is required
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email" formControlName="email">
+          <div class="text-warning" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+            Valid email required
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <textarea rows="4" class="form-control" placeholder="Your Message" formControlName="message"></textarea>
+          <div class="text-warning" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+            Message is required
+          </div>
+        </div>
+
+        <button class="btn btn-light fw-bold px-4" type="submit" [disabled]="contactForm.invalid">Send</button>
+      </form>
+    </div>
+  </div>
+</section>

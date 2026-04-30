@@ -1,0 +1,83 @@
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+
+
+  .form-side {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 2rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+
+  .info-side {
+    position: relative;
+    color: white;
+    padding: 2rem;
+    background: url('/donorEli.png') center no-repeat;
+    background-size: cover;
+  }
+
+
+  .info-overlay {
+    position: absolute;
+    inset: 0;
+background: linear-gradient(rgba(138,112,141,0.85), rgba(12,12,12,0.85)), url('/donate.png') center/cover;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .btn-custom {
+    background: linear-gradient(90deg, var(--burgundy), var(--burgundy-90));
+    color: black;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .btn-custom:hover {
+    background: linear-gradient(90deg, var(--burgundy-90), var(--burgundy));
+    transform: scale(1.05);
+  }
+
+
+  label {
+    font-weight: 600;
+    color:black;
+  }
+
+
+  .form-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color:black;
+  }
+
+  .form-control::placeholder {
+    color:black;
+  }
+
+  .info-side ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .info-side li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+
+  @media (max-width: 768px) {
+    .form-side {
+      border-right: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+

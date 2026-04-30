@@ -1,0 +1,58 @@
+<div class="chatbox" *ngIf="isOpen">
+
+  <!-- Header with Close Button -->
+  <div class="chatbox-header">
+    <h3>🩸 Blood Donation Chatbot</h3>
+    <button class="close-btn" (click)="closeChatbot()" title="Close Chatbot">❌</button>
+  </div>
+
+  <!-- Messages Container -->
+  <div class="messages" #messagesContainer>
+    <div *ngFor="let msg of messages"
+         [ngClass]="['message', msg.sender]">
+      <div class="message-content">
+        {{ msg.text }}
+      </div>
+      <span class="message-time">{{ msg.timestamp | date:'short' }}</span>
+    </div>
+  </div>
+
+  <!-- Predefined Questions -->
+  <div class="options" *ngIf="showQuestions && messages.length <= 1">
+    <p class="options-title">Popular Questions:</p>
+    <button *ngFor="let q of questions"
+            (click)="selectQuestion(q)"
+            class="question-btn"
+            title="{{ q }}">
+      {{ q }}
+    </button>
+  </div>
+
+  <!-- Chat Input Area -->
+  <div class="search-box" *ngIf="messages.length > 0">
+
+    <input type="text"
+           [(ngModel)]="userInput"
+           (input)="filterQuestions()"
+           placeholder="Ask a question..."
+           class="chatbot-input"
+           (keyup.enter)="sendMessage(userInput)" />
+
+    <button (click)="sendMessage(userInput)"
+            class="send-btn"
+            [disabled]="!userInput.trim()">
+      ➤
+    </button>
+
+    <!-- Auto Suggestions Dropdown -->
+    <div class="suggestions" *ngIf="filteredQuestions.length > 0">
+      <div class="suggestion-item"
+           *ngFor="let q of filteredQuestions"
+           (click)="selectSuggestion(q)">
+        {{ q }}
+      </div>
+    </div>
+
+  </div>
+
+</div>

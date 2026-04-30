@@ -1,0 +1,42 @@
+.info-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.container{}
+.info-card ul li::before {
+  content: "💧 ";
+  margin-right: 8px;
+  color: #ffeb3b;
+  font-weight: bold;
+}
+
+.benefit-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+.benefit-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.benefit-card div {
+  transition: all 0.3s ease-in-out;
+}
+

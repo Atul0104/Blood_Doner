@@ -1,0 +1,186 @@
+<div class="register-wrapper">
+
+  <div class="register-container">
+
+    <!-- Left Side: Image Section -->
+    <div class="info-side">
+      <div class="info-overlay"></div>
+      <div class="info-content">
+        <h1>🩸 Register Now</h1>
+        <p>Join our mission to save lives. Every drop counts, and your donation can bring hope to someone in need.</p>
+        <div class="badge">Start Your Journey</div>
+      </div>
+    </div>
+    
+    <!-- Right Side: Form Section -->
+    <div class="form-side">
+      <div class="form-card">
+        <h2>Become a Lifesaving Blood Donor</h2>
+        <p class="form-subtitle">Join thousands of donors making a difference</p>
+
+        <!-- Form Validation Summary - Compact -->
+        <div *ngIf="registerForm.invalid && registerForm.touched" class="form-validation-summary">
+          <span class="summary-icon">⚠️</span>
+          <span class="summary-text">Please fill in all required fields</span>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form" novalidate>
+          
+          <!-- Two Column Grid -->
+          <div class="form-grid">
+            
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name">Full Name <span class="required">*</span></label>
+              <input 
+                id="name"
+                type="text" 
+                formControlName="name" 
+                placeholder="Your name"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('name')?.invalid && registerForm.get('name')?.touched}" />
+              <small *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid" class="error-text">
+                {{registerForm.get('name')?.hasError('required') ? 'Required' : 'Invalid'}}
+              </small>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone">Phone <span class="required">*</span></label>
+              <input 
+                id="phone"
+                type="text" 
+                formControlName="phone" 
+                placeholder="10-digit number"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched}" />
+              <small *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid" class="error-text">
+                {{registerForm.get('phone')?.hasError('required') ? 'Required' : '10 digits'}}
+              </small>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input 
+                id="email"
+                type="email" 
+                formControlName="email" 
+                placeholder="your@email.com"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}" />
+              <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="error-text">
+                {{registerForm.get('email')?.hasError('required') ? 'Required' : 'Invalid email'}}
+              </small>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Password <span class="required">*</span></label>
+              <input 
+                id="password"
+                type="password" 
+                formControlName="password" 
+                placeholder="6+ characters"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}" />
+              <small *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="error-text">
+                {{registerForm.get('password')?.hasError('required') ? 'Required' : '6+ chars'}}
+              </small>
+            </div>
+
+            <!-- Age -->
+            <div class="form-group">
+              <label for="age">Age <span class="required">*</span></label>
+              <input 
+                id="age"
+                type="number" 
+                formControlName="age" 
+                placeholder="18-65"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('age')?.invalid && registerForm.get('age')?.touched}" />
+              <small *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.invalid" class="error-text">
+                {{registerForm.get('age')?.hasError('required') ? 'Required' : '18-65 yrs'}}
+              </small>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+              <label for="gender">Gender <span class="required">*</span></label>
+              <select 
+                id="gender"
+                formControlName="gender"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched}">
+                <option value="" disabled>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <small *ngIf="registerForm.get('gender')?.touched && registerForm.get('gender')?.invalid" class="error-text">
+                Required
+              </small>
+            </div>
+
+            <!-- Blood Group -->
+            <div class="form-group">
+              <label for="bloodGroup">Blood Group <span class="required">*</span></label>
+              <select 
+                id="bloodGroup"
+                formControlName="bloodGroup"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('bloodGroup')?.invalid && registerForm.get('bloodGroup')?.touched}">
+                <option value="" disabled>Select</option>
+                <option *ngFor="let bg of bloodGroups" [value]="bg">{{ bg }}</option>
+              </select>
+              <small *ngIf="registerForm.get('bloodGroup')?.touched && registerForm.get('bloodGroup')?.invalid" class="error-text">
+                Required
+              </small>
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+              <label for="location">Location <span class="required">*</span></label>
+              <input 
+                id="location"
+                type="text" 
+                formControlName="location" 
+                placeholder="City/region"
+                class="form-control"
+                [ngClass]="{'is-invalid': registerForm.get('location')?.invalid && registerForm.get('location')?.touched}" />
+              <small *ngIf="registerForm.get('location')?.touched && registerForm.get('location')?.invalid" class="error-text">
+                {{registerForm.get('location')?.hasError('required') ? 'Required' : 'Invalid'}}
+              </small>
+            </div>
+
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit"
+            class="register-btn"
+            [disabled]="isButtonDisabled"
+            [ngClass]="{
+              'btn-disabled': isButtonDisabled,
+              'btn-enabled': !isButtonDisabled,
+              'btn-submitting': isFormSubmitting
+            }"
+            [title]="buttonTooltip">
+            <span *ngIf="!isFormSubmitting" class="btn-text" routerLink="/home">
+              🩸 Register as Donor
+            </span>
+            <span *ngIf="isFormSubmitting" class="btn-text-submitting">
+              <span class="spinner"></span> Registering...
+            </span>
+          </button>
+
+        </form>
+
+        <p class="form-footer">By registering, you agree to save lives and make a difference</p>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+
+<div class="team-container">
+
+  <div class="about-section">
+    <div class="about-overlay"></div>
+    <div class="about-content">
+      <h1>Join Our Team</h1>
+      <p class="mission">Be part of our mission to save lives and spread hope. Every hand helps make a difference.</p>
+    </div>
+  </div>
+
+
+  <div class="form-section">
+    <h2>Fill the Form Below</h2>
+
+    <form [formGroup]="joinForm" (ngSubmit)="onSubmit()" class="join-form">
+      <label>
+        Full Name
+        <input type="text" formControlName="fullName" placeholder="Enter your full name" />
+        <div *ngIf="joinForm.get('fullName')?.touched && joinForm.get('fullName')?.invalid" class="text-danger">
+          Name is required
+        </div>
+      </label>
+
+      <label>
+        Email
+        <input type="email" formControlName="email" placeholder="Enter your email" />
+        <div *ngIf="joinForm.get('email')?.touched && joinForm.get('email')?.invalid" class="text-danger">
+          Valid email is required
+        </div>
+      </label>
+
+      <label>
+        Phone
+        <input type="text" formControlName="phone" placeholder="Enter your phone number" />
+        <div *ngIf="joinForm.get('phone')?.touched && joinForm.get('phone')?.invalid" class="text-danger">
+          10-digit phone number is required
+        </div>
+      </label>
+
+      <label>
+        Message
+        <textarea formControlName="message" rows="4" placeholder="Write your message"></textarea>
+        <div *ngIf="joinForm.get('message')?.touched && joinForm.get('message')?.invalid" class="text-danger">
+          Message is required
+        </div>
+      </label>
+
+      <button type="submit" [disabled]="joinForm.invalid">Submit</button>
+    </form>
+
+    <div *ngIf="submitted && joinForm.valid" class="thank-you">
+      ✅ Thank you for reaching out! We'll get back to you soon.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.volunteer-container {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: var(--nude-12);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(200, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  color: var(--muted);
+  font-weight: bold;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--off-black);
+}
+
+.form-control {
+  padding: 10px;
+  border-radius: 6px;
+}
+
+button {
+  font-weight: bold;
+  padding: 12px;
+}

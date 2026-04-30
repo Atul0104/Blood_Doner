@@ -1,0 +1,25 @@
+.footer {
+  background: linear-gradient(180deg, #222, #000);
+}
+
+.footer h5 {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.footer a {
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--burgundy) !important;
+}
+
+.footer i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer a:hover i {
+  transform: scale(1.2);
+  color: var(--burgundy);
+}

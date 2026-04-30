@@ -1,0 +1,32 @@
+.card-header {
+  background: linear-gradient(135deg, var(--burgundy), var(--burgundy-90));
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--burgundy);
+  box-shadow: 0 0 8px var(--burgundy-60);
+}
+
+.btn-danger {
+  background:rgb(233, 84, 84);
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  transform: scale(1.05);
+}
+
+.alert-success {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: white;
+  border: none;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, var(--burgundy), var(--burgundy-60));
+  color: white;
+  border: none;
+}
+

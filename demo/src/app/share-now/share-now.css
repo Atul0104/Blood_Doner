@@ -1,0 +1,29 @@
+.awareness-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--nude-12);
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--burgundy-60);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  color: var(--burgundy);
+  font-weight: bold;
+}
+
+p {
+  color: var(--off-black);
+  font-size: 1rem;
+}
+
+.form-control {
+  border-radius: 6px;
+  padding: 10px;
+}
+
+button {
+  font-weight: bold;
+  padding: 10px;
+}

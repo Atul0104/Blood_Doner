@@ -1,0 +1,19 @@
+<div class="auth-container">
+  <h2>{{ isLogin ? 'Login' : 'Sign Up' }}</h2>
+
+  <div *ngIf="message" class="alert">{{ message }}</div>
+
+  <!-- Name field only for signup -->
+  <div *ngIf="!isLogin">
+    <input type="text" placeholder="Name" [(ngModel)]="name">
+  </div>
+
+  <input type="email" placeholder="Email" [(ngModel)]="email">
+  <input type="password" placeholder="Password" [(ngModel)]="password">
+
+  <button (click)="submit()">{{ isLogin ? 'Login' : 'Sign Up' }}</button>
+
+  <p class="toggle-link" (click)="toggleForm()">
+    {{ isLogin ? 'Create new account?' : 'Already have an account?' }}
+  </p>
+</div>

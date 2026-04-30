@@ -1,0 +1,84 @@
+
+<div class="about-section container my-5 p-5 rounded-4 shadow-lg text-white" style="background: linear-gradient(135deg, var(--burgundy), var(--off-black)); font-family: 'Segoe UI', sans-serif;">
+  <h2 class="text-center mb-4 display-5 fw-bold text-light animate__animated animate__fadeInDown">
+    <span class="text-warning">Drop of Hope</span>
+  </h2>
+
+  <p class="lead text-center mb-5 text-light">
+    <i class="bi bi-droplet-half text-danger me-2"></i>
+    Drop of Hope is more than just a blood donation platform  it’s a movement to connect compassionate donors with those in need.
+  </p>
+
+  <div class="row text-light">
+    <div class="col-md-6 mb-4">
+      <div class="info-card p-4 rounded-3 bg-opacity-25 bg-black h-100">
+        <h4 class="text-warning mb-3"><i class="bi bi-eye-fill me-2"></i>Our Vision</h4>
+        <p class="mb-0">To build a community where <strong>no one dies due to lack of blood</strong>. We aim to inspire regular, voluntary donors across all regions.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="info-card p-4 rounded-3 bg-opacity-25 bg-black h-100">
+        <h4 class="text-warning mb-3"><i class="bi bi-bullseye me-2"></i>Our Mission</h4>
+        <ul class="mb-0">
+          <li>🌍 Promote voluntary donation</li>
+          <li>📢 Educate the public on its importance</li>
+          <li>🔗 Connect donors & recipients seamlessly</li>
+          <li>🔒 Maintain transparency & trust</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="benefits-section mt-5 text-light">
+  <h4 class="text-warning mb-4">
+    <i class="bi bi-stars me-2"></i>Why Choose Us?
+  </h4>
+
+  <div class="row g-4">
+    <div class="col-md-4" (click)="toggleBenefit('search')">
+      <div class="benefit-card p-4 rounded-3 bg-light bg-opacity-10 border border-warning text-white h-100 hover-scale">
+        ✅ Real-time donor search
+        <div *ngIf="selectedBenefit === 'search'" class="mt-2 small">
+          Our platform enables instant access to active donors near your location using smart filters and geolocation.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" (click)="toggleBenefit('verified')">
+      <div class="benefit-card p-4 rounded-3 bg-light bg-opacity-10 border border-warning text-white h-100 hover-scale">
+        ✅ Verified donor database
+        <div *ngIf="selectedBenefit === 'verified'" class="mt-2 small">
+          Every donor is verified manually or via trusted channels to ensure safe and reliable donation processes.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" (click)="toggleBenefit('camps')">
+      <div class="benefit-card p-4 rounded-3 bg-light bg-opacity-10 border border-warning text-white h-100 hover-scale">
+        ✅ Health camps & awareness drives
+        <div *ngIf="selectedBenefit === 'camps'" class="mt-2 small">
+          We organize local camps and campaigns in schools, colleges, and workplaces to promote blood donation.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" (click)="toggleBenefit('ui')">
+      <div class="benefit-card p-4 rounded-3 bg-light bg-opacity-10 border border-warning text-white h-100 hover-scale">
+        ✅ Simple & clean UI
+        <div *ngIf="selectedBenefit === 'ui'" class="mt-2 small">
+          Easy navigation, responsive design, and no sign-up hassles for quick and intuitive use.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" (click)="toggleBenefit('support')">
+      <div class="benefit-card p-4 rounded-3 bg-light bg-opacity-10 border border-warning text-white h-100 hover-scale">
+        ✅ Support in cities & rural areas
+        <div *ngIf="selectedBenefit === 'support'" class="mt-2 small">
+          We’re building bridges across urban and rural areas with local volunteers and mobile units.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

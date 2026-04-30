@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'leaflet/dist/leaflet.css';
+
+html, body {
+  overflow-x: hidden; /* Prevent side scrolling */
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Primary site palette requested by user */
+  --burgundy: #4B1D3F;     /* deep burgundy */
+  --nude: #E8D9C1;         /* warm nude */
+  --rose-smoke: #D8A7B1;   /* soft rose-smoke */
+  --off-black: #1B1B1B;    /* near black for text */
+
+  /* helper variants */
+  --burgundy-90: rgba(75,29,63,0.9);
+  --burgundy-60: rgba(75,29,63,0.6);
+  --nude-25: rgba(232,217,193,0.25);
+  --nude-12: rgba(232,217,193,0.12);
+  --rose-18: rgba(216,167,177,0.18);
+  --muted: rgba(27,27,27,0.6);
+  --muted-40: rgba(27,27,27,0.4);
+  --surface: #ffffff;
+}

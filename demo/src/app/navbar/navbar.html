@@ -1,0 +1,91 @@
+<marquee class="marquee">
+  ❤️ A Few Drops of You, a Lifetime for Someone Else! ❤️
+</marquee>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <img src="/logo.png" alt="logo" class="navbarlogo">
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarScroll">
+
+      <ul class="navbar-nav mx-auto my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" (click)="closeNavbar()" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" (click)="closeNavbar()" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/get-involved" (click)="closeNavbar()" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">GET INVOLVED</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" (click)="closeNavbar()" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">CONTACT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/blood-finder" (click)="closeNavbar()" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">BLOOD FINDER</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/verify-donors" (click)="closeNavbar()" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">ADMIN</a>
+        </li>
+      </ul>
+
+      <!-- Buttons -->
+     <!-- Buttons -->
+<div class="d-flex align-items-center gap-3 position-relative">
+
+  <!-- Donate Button -->
+  <a class="btn btn-danger px-4 rounded-pill fw-bold"
+     routerLink="/Donate-now"
+     (click)="closeNavbar()">
+    Donate
+  </a>
+
+  <!-- Chat Button -->
+  <button class="btn btn-danger px-3 rounded-pill fw-bold"
+          (click)="toggleChat()">
+    Chat 💬
+  </button>
+
+  <app-chatbot *ngIf="showChat"></app-chatbot>
+
+  <!-- 🔐 If NOT Logged In -->
+  <button *ngIf="!auth.isLoggedIn()"
+          class="btn btn-danger rounded-pill px-3 fw-bold "
+          routerLink="/login">
+    Login
+  </button>
+
+  <!-- 👤 If Logged In -->
+  <div *ngIf="auth.isLoggedIn()" class="profile-wrapper">
+
+    <!-- Profile Circle -->
+    <!-- <div class="profile-icon"
+         (click)="toggleMenu()">
+      {{ auth.getUser()?.email[0] | uppercase }}
+    </div> -->
+
+    <!-- Dropdown -->
+    <div *ngIf="menuOpen" class="profile-dropdown shadow">
+      <a routerLink="/profile" class="dropdown-item">Profile</a>
+      <a (click)="logout()" class="dropdown-item text-danger">Logout</a>
+    </div>
+
+  </div>
+
+</div>
+

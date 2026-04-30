@@ -1,0 +1,72 @@
+
+<div class="container py-5">
+  <div class="row glass-card">
+
+    <div class="col-md-6 form-side">
+      <h1 class="text-center text-black mb-4">Donor Eligibility Form</h1>
+
+      <form [formGroup]="donor" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="mb-3">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name" />
+          <div *ngIf="f['name'].touched && f['name'].invalid" class="text-warning small">
+            <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+            <div *ngIf="f['name'].errors?.['minlength']">Name must be at least 3 characters.</div>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <label for="age">Age</label>
+          <input type="number" id="age" formControlName="age" class="form-control" placeholder="Enter your age" />
+          <div *ngIf="f['age'].touched && f['age'].invalid" class="text-warning small">
+            <div *ngIf="f['age'].errors?.['required']">Age is required.</div>
+            <div *ngIf="f['age'].errors?.['min']">Minimum age is 18.</div>
+            <div *ngIf="f['age'].errors?.['max']">Maximum age is 65.</div>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <label for="weight">Weight (kg)</label>
+          <input type="number" id="weight" formControlName="weight" class="form-control" placeholder="Enter your weight" />
+          <div *ngIf="f['weight'].touched && f['weight'].invalid" class="text-warning small">
+            <div *ngIf="f['weight'].errors?.['required']">Weight is required.</div>
+            <div *ngIf="f['weight'].errors?.['min']">Minimum weight is 50kg.</div>
+          </div>
+        </div>
+
+
+        <div class="form-check mb-4">
+          <input type="checkbox" class="form-check-input" formControlName="eligibilityCheck" id="eligibilityCheck" />
+          <label for="eligibilityCheck" class="form-check-label text-black">
+            I confirm I meet the above eligibility criteria.
+          </label>
+          <div *ngIf="f['eligibilityCheck'].touched && f['eligibilityCheck'].invalid" class="text-warning small">
+            You must confirm the eligibility criteria.
+          </div>
+        </div>
+
+
+        <div class="text-center">
+          <button class="btn btn-custom px-4 py-2" type="submit" [disabled]="donor.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="col-md-6 info-side">
+      <div class="info-overlay">
+        <h3 class="fw-bold mb-3">Eligibility Criteria</h3>
+        <ul>
+          <li>✔️ Aged 18 to 65 years</li>
+          <li>✔️ Weighs at least 50kg</li>
+          <li>✔️ In good general health</li>
+          <li>✔️ No recent tattoos or piercings (within 6 months)</li>
+          <li>✔️ Not currently pregnant or breastfeeding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

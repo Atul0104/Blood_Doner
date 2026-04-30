@@ -1,0 +1,71 @@
+/* Marquee Styling */
+.marquee {
+ background: linear-gradient(135deg, var(--burgundy), var(--rose-smoke));
+  font-weight: bold;
+  padding: 12px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(235, 229, 229, 0.3);
+}
+
+.navbarlogo {
+  width: 120px;
+  height: 80px;
+}
+
+.nav-link {
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.nav-link.active {
+  color: var(--burgundy) !important; /* Vibrant accent when active */
+  font-weight: bold;
+} 
+.profile-wrapper {
+  position: relative;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-icon:hover {
+  background-color: #b02a37;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  padding: 10px 0;
+  width: 150px;
+  z-index: 1000;
+}
+
+.profile-dropdown .dropdown-item {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+/* .container-fluid{
+   background: linear-gradient(135deg, var(--burgundy), var(--rose-smoke));
+} */

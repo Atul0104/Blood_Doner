@@ -1,0 +1,25 @@
+class node
+{
+    public:
+        int data;
+        node*next;
+};
+class HT
+{
+    public:
+        node*table [10];
+        void insert(int key);
+        void search(int key);
+        void delete key(int key);
+        void display();
+        HT();
+};
+HT::HT()
+{
+    int i;
+    for(i=0,i<10,i++)
+    
+
+}
+}
+}

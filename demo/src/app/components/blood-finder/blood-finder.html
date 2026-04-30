@@ -1,0 +1,270 @@
+<div class="blood-finder-container">
+  <div class="blood-finder-header">
+    <h1>🩸 Blood Donor Finder</h1>
+    <p>Find available blood donors near you and connect instantly</p>
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-label">Total Donors:</span>
+        <span class="stat-value">{{ donors.length }}</span>
+      </div>
+      <div class="stat available">
+        <span class="stat-label">Available:</span>
+        <span class="stat-value">{{ availableDonorCount }}</span>
+      </div>
+      <div class="stat unavailable">
+        <span class="stat-label">Unavailable:</span>
+        <span class="stat-value">{{ unavailableDonorCount }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="blood-finder-wrapper">
+    <!-- Left Panel: Search Controls -->
+    <div class="search-panel">
+      <div class="search-section">
+        <h3>Search Donors</h3>
+        
+        <div class="form-group">
+          <label for="bloodGroup">Blood Group:</label>
+          <select 
+            id="bloodGroup"
+            [(ngModel)]="selectedBloodGroup"
+            class="form-control">
+            <option value="">Select Blood Group</option>
+            <option *ngFor="let bg of bloodGroups" [value]="bg">{{ bg }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <select 
+            id="city"
+            [(ngModel)]="selectedCity"
+            class="form-control">
+            <option value="">Select City</option>
+            <option *ngFor="let c of cities" [value]="c">{{ c }}</option>
+          </select>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" [(ngModel)]="showUnavailable" (change)="toggleUnavailable()">
+            Show Unavailable Donors
+          </label>
+        </div>
+
+        <div class="button-group">
+          <button 
+            (click)="searchDonors()" 
+            [disabled]="isLoading"
+            class="btn-search">
+            {{ isLoading ? 'Searching...' : 'Search' }}
+          </button>
+          <button (click)="resetSearch()" class="btn-reset">Reset</button>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+
+        <div class="results-info">
+          <p *ngIf="filteredDonors.length > 0">
+            Found <strong>{{ filteredDonors.length }}</strong> donors
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle: Map -->
+    <div class="map-section">
+      <div id="bloodFinderMap" class="blood-finder-map"></div>
+    </div>
+
+    <!-- Right Panel: Donors List -->
+    <div class="donors-panel">
+      <div class="donors-list">
+        <h3>Donors List</h3>
+        
+        <div *ngIf="filteredDonors.length === 0" class="no-donors">
+          <p>No donors to display. Try searching with different criteria.</p>
+        </div>
+
+        <div *ngIf="filteredDonors.length > 0">
+          <!-- Donor Cards -->
+          <div *ngFor="let donor of paginatedDonors" class="donor-card" [ngClass]="{'unavailable-card': !donor.isAvailable}">
+            <div class="donor-header">
+              <div class="donor-name">
+                <h4>{{ donor.name }}</h4>
+                <span class="blood-badge" [ngClass]="'bg-' + donor.bloodGroup.replace('+', 'plus').replace('-', 'minus')">
+                  {{ donor.bloodGroup }}
+                </span>
+              </div>
+              <span class="availability-badge" [ngClass]="donor.isAvailable ? 'available' : 'unavailable'">
+                {{ donor.isAvailable ? '✓ Available' : '✗ Unavailable' }}
+              </span>
+            </div>
+
+            <div class="donor-details">
+              <div class="detail-row">
+                <span class="label">📍 Location:</span>
+                <span class="value">{{ donor.city }}</span>
+              </div>
+              <div class="detail-row">
+                <span class="label">📱 Phone:</span>
+                <span class="value">{{ donor.phone }}</span>
+              </div>
+              <div class="detail-row">
+                <span class="label">👤 Age:</span>
+                <span class="value">{{ donor.age }} years</span>
+              </div>
+              <div class="detail-row">
+                <span class="label">⚖️ Weight:</span>
+                <span class="value">{{ donor.weight }} kg</span>
+              </div>
+              <div class="detail-row">
+                <span class="label">🩸 Last Donation:</span>
+                <span class="value">{{ donor.lastDonation }} days ago</span>
+              </div>
+            </div>
+
+            <div class="donor-actions">
+              <button (click)="viewProfile(donor)" class="btn-profile">View Profile</button>
+              <button (click)="contactDonor(donor)" class="btn-contact" [disabled]="!donor.isAvailable">
+                Contact
+              </button>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div *ngIf="totalPages > 1" class="pagination">
+            <button 
+              (click)="prevPage()" 
+              [disabled]="currentPage === 1"
+              class="btn-pagination">
+              ← Previous
+            </button>
+
+            <div class="page-numbers">
+              <button 
+                *ngFor="let pg of pageNumbers"
+                (click)="goToPage(pg)"
+                [ngClass]="{'active': currentPage === pg}"
+                class="page-number">
+                {{ pg }}
+              </button>
+            </div>
+
+            <button 
+              (click)="nextPage()" 
+              [disabled]="currentPage === totalPages"
+              class="btn-pagination">
+              Next →
+            </button>
+          </div>
+
+          <div class="pagination-info">
+            Page {{ currentPage }} of {{ totalPages }} | Showing {{ paginatedDonors.length }} of {{ filteredDonors.length }} donors
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div *ngIf="selectedProfile" class="profile-modal-overlay" (click)="closeProfile()">
+    <div class="profile-modal" (click)="$event.stopPropagation()">
+      <div class="profile-header">
+        <h2>{{ selectedProfile.name }}</h2>
+        <button class="close-btn" (click)="closeProfile()">✕</button>
+      </div>
+
+      <div class="profile-content">
+        <div class="profile-section">
+          <h3>Personal Information</h3>
+          <div class="profile-grid">
+            <div class="profile-item">
+              <label>Full Name</label>
+              <p>{{ selectedProfile.name }}</p>
+            </div>
+            <div class="profile-item">
+              <label>Age</label>
+              <p>{{ selectedProfile.age }} years</p>
+            </div>
+            <div class="profile-item">
+              <label>Gender</label>
+              <p>{{ selectedProfile.gender }}</p>
+            </div>
+            <div class="profile-item">
+              <label>Weight</label>
+              <p>{{ selectedProfile.weight }} kg</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>Blood Information</h3>
+          <div class="profile-grid">
+            <div class="profile-item">
+              <label>Blood Group</label>
+              <p>
+                <span class="blood-badge-large" [ngClass]="'bg-' + selectedProfile.bloodGroup.replace('+', 'plus').replace('-', 'minus')">
+                  {{ selectedProfile.bloodGroup }}
+                </span>
+              </p>
+            </div>
+            <div class="profile-item">
+              <label>Total Donations</label>
+              <p>{{ selectedProfile.totalDonations }} times</p>
+            </div>
+            <div class="profile-item">
+              <label>Last Donation</label>
+              <p>{{ selectedProfile.lastDonation }} days ago</p>
+            </div>
+            <div class="profile-item">
+              <label>Availability Status</label>
+              <p>
+                <span class="status-badge" [ngClass]="selectedProfile.isAvailable ? 'available' : 'unavailable'">
+                  {{ selectedProfile.isAvailable ? 'Available' : 'Not Available' }}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>Contact Information</h3>
+          <div class="profile-grid">
+            <div class="profile-item">
+              <label>Email</label>
+              <p>{{ selectedProfile.email }}</p>
+            </div>
+            <div class="profile-item">
+              <label>Phone</label>
+              <p>{{ selectedProfile.phone }}</p>
+            </div>
+            <div class="profile-item">
+              <label>Alternate Phone</label>
+              <p>{{ selectedProfile.alternatePhone }}</p>
+            </div>
+            <div class="profile-item">
+              <label>City</label>
+              <p>{{ selectedProfile.city }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>Address</h3>
+          <p class="address-text">{{ selectedProfile.address }}</p>
+        </div>
+
+        <div class="profile-actions">
+          <button class="btn-contact-large" [disabled]="!selectedProfile.isAvailable" (click)="contactDonor(selectedProfile)">
+            📞 Contact Donor
+          </button>
+          <button class="btn-close-profile" (click)="closeProfile()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

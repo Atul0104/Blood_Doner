@@ -1,0 +1,306 @@
+
+<section class="career-section position-relative text-white text-center">
+  <video autoplay muted loop playsinline class="career-video-bg">
+    <source src="video.mp4" type="video/mp4" />
+ 
+  </video>
+
+
+
+  <div class="career-overlay">
+    <h2 class="animate_animated animate_fadeInDown">
+      Every drop counts Be a drop of hope
+    </h2>
+    <p class="animate_animated animatefadeInUp animate_delay-1s">
+      Even a single drop of blood can bring hope to someone fighting for their life. Your small act of kindness can make a big difference be the drop that saves a life.
+    </p>
+    <a href="Register-now" [ngStyle]="{ 
+  'border': '1px solid var(--nude-12)', 
+  'padding': '12px', 
+  'border-radius': '35px'}" 
+  class="btn btn-outline-light mt-3 animate_animated animatezoomIn animate_delay-2s btn-danger">
+      Register Now
+    </a>
+  </div>
+</section>
+<br>
+<h2 class="heading1"><b>How <span class="redtext">Donation</span> Works ?</b></h2>
+<br>
+<div class="cards">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col align-self-start">
+      <a routerLink="/register" class="text-decoration-none text-dark ">
+        <div class="colum card-hover">
+          <img src="check.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>Registration Process</b></h5>
+            <p class="card-text">Sign up and schedule your first with ease</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col align-self-center">
+      <a routerLink="/health-check" class="text-decoration-none text-dark">
+        <div class="colum card-hover">
+          <img src="body-check (1).png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>Health Scanning</b></h5>
+            <p class="card-text">A simple check-up to ensure you're ready to donate</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col align-self-end">
+      <a routerLink="/donation-day" class="text-decoration-none text-dark">
+        <div class="colum card-hover">
+          <img src="heart.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>Donation Day</b></h5>
+            <p class="card-text">Relax as our professional staff guide you through</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<br>
+<div class="Img"> 
+  <br> 
+<<div class="container my-5">
+  <h2 class="text-center text-danger fw-bold mb-5">Our Services</h2>
+
+  <div class="timeline">
+
+    <!-- Donor Eligibility -->
+    <div class="timeline-item left">
+      <a routerLink="/donar-eligiblity" class="timeline-content">
+        <img src="eligibility.png" class="timeline-icon" alt="">
+        <h5>Donor Eligibility</h5>
+        <p>Check if you are eligible to donate blood safely.</p>
+      </a>
+    </div>
+
+    <!-- Join Team -->
+    <div class="timeline-item right">
+      <a routerLink="/Join-team" class="timeline-content">
+        <img src="jointeam.png" class="timeline-icon" alt="">
+        <h5>Join Our Team</h5>
+        <p>Become part of our mission and help save lives.</p>
+      </a>
+    </div>
+
+    <!-- Register -->
+    <div class="timeline-item left">
+      <a routerLink="/Register-now" class="timeline-content">
+        <img src="ragister.png" class="timeline-icon" alt="">
+        <h5>Register Now</h5>
+        <p>Create your donor profile in minutes.</p>
+      </a>
+    </div>
+
+    <!-- Donate -->
+    <div class="timeline-item right">
+      <a routerLink="/Donate-now" class="timeline-content">
+        <img src="donatenow.png" class="timeline-icon" alt="">
+        <h5>Donate Now</h5>
+        <p>Schedule and donate blood easily.</p>
+      </a>
+    </div>
+
+    <!-- Search -->
+    <div class="timeline-item left">
+      <a routerLink="/Search-Donor" class="timeline-content">
+        <img src="searchdonar.png" class="timeline-icon" alt="">
+        <h5>Search Donor</h5>
+        <p>Find donors near you quickly.</p>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
+  <h2 class="title">Learn About Donation</h2>
+<div class="blood-types">
+<button 
+  *ngFor="let type of bloodData | keyvalue" 
+  class="blood-btn" 
+  [class.active]="selectedType === type.key"
+  (click)="selectType(type.key)">
+  {{ type.key }}
+</button>
+</div>
+<div class="info-container">
+  <div>
+    <div class="info-box take-box">
+      You can take from <br> {{ takeFrom }}
+    </div>
+    <div class="info-box give-box">
+      You can give to <br> {{ giveTo }}
+    </div>
+  </div>
+  <div class="illustration">
+    <img src="https://cdn-icons-png.flaticon.com/512/2966/2966486.png" alt="Blood Donation">
+  </div>
+</div>
+<p class="footer-text">
+  One Blood Donation can save upto <span>Three Lives</span>
+</p>
+<br>
+<br>
+
+  <div class="container mb-5">
+    <h3 class="text-center text-danger section-title mb-4">Why Your Donation Matters</h3>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="p-3 border rounded shadow-sm bg-white">
+          <h5><strong>Save 3 Lives</strong></h5>
+          <p>Your blood donation can help trauma victims, cancer patients, and more.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="p-3 border rounded shadow-sm bg-white">
+          <h5><strong>Health Benefits</strong></h5>
+          <p>Regular donors reduce the risk of heart disease and improve blood flow.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="p-3 border rounded shadow-sm bg-white">
+          <h5><strong>Community Impact</strong></h5>
+          <p>Support local hospitals and ensure a ready blood supply during emergencies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="button"> 
+<div class="container my-5">
+  <h2 class="text-center fw-bold text-danger mb-3">Types of Donation</h2>
+  <br>
+  <p class="text-center mb-4">
+    The average human body contains about five litres of blood, which is made of several cellular and non-cellular components such as 
+    <span class="fw-bold text-danger">Red Blood Cells</span>, 
+    <span class="fw-bold text-danger">Platelets</span>, 
+    and <span class="fw-bold text-danger">Plasma</span>. 
+    Each component serves a different function and can be donated separately to help patients with specific needs.
+  </p>
+
+  <div class="d-flex flex-md-row flex-column">
+    
+    <div class="nav flex-column nav-pills me-4 w-md-25 mb-3" role="tablist" aria-orientation="vertical">
+      <button class="tab-btn active" data-bs-toggle="pill" data-bs-target="#prbc" type="button" role="tab">Red Blood Cells</button>
+      <button class="tab-btn" data-bs-toggle="pill" data-bs-target="#plasma" type="button" role="tab">Plasma</button>
+      <button class="tab-btn" data-bs-toggle="pill" data-bs-target="#platelets" type="button" role="tab">Platelets</button>
+    </div>
+
+    <div class="tab-content flex-grow-1 p-4 border rounded shadow-sm bg-white">
+
+      <div class="tab-pane fade show active donation-content" id="prbc" role="tabpanel">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <h5><strong>What is it?</strong></h5>
+            <p>Blood collected directly into a blood bag and mixed with an anticoagulant is called whole blood. This is centrifuged to separate red cells, plasma, and platelets. The red cells are preserved and known as packed red blood cells (PRBCs).</p>
+
+            <h6><strong>Who can donate?</strong></h6>
+            <p>Individuals aged 18–65 years, weighing 45kg or more, and in good health.</p>
+
+            <h6><strong>Used For?</strong></h6>
+            <p>Treatment of severe anemia, blood loss during childbirth, surgeries, and trauma cases.</p>
+
+            <h6><strong>Storage Duration?</strong></h6>
+            <p>Can be stored up to 42 days at 2–6°C.</p>
+
+            <h6><strong>Donation Time?</strong></h6>
+            <p>15–30 minutes, including pre-checkup.</p>
+
+            <h6><strong>Donation Frequency?</strong></h6>
+            <p>Males: every 90 days | Females: every 120 days.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="Redbloodcell.png" alt="Red Blood Cells" class="img-fluid rounded-3 shadow-sm donation-img">
+            <br>
+            <br>
+            <img src="Redbloodcell1.png" alt="Red Blood Cells" class="img-fluid rounded-3 shadow-sm donation-img">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade donation-content" id="plasma" role="tabpanel">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <h5><strong>What is it?</strong></h5>
+            <p>Plasma is the yellowish liquid component of blood that carries blood cells, proteins, hormones, and nutrients. It plays a key role in clotting and fighting infections.</p>
+
+            <h6><strong>Who can donate?</strong></h6>
+            <p>Healthy individuals aged 18 or above, weighing more than 50kg.</p>
+
+            <h6><strong>Used For?</strong></h6>
+            <p>Treatment of burn victims, trauma patients, and people with liver or clotting disorders.</p>
+
+            <h6><strong>Donation Time?</strong></h6>
+            <p>Typically 30–45 minutes using apheresis technology.</p>
+
+            <h6><strong>Donation Frequency?</strong></h6>
+            <p>Every 14 days, up to 24 times a year.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="plasmaliquid.png" alt="Plasma" class="img-fluid rounded-3 shadow-sm donation-img">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade donation-content" id="platelets" role="tabpanel">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <h5><strong>What is it?</strong></h5>
+            <p>Platelets are small, colorless cell fragments in your blood that help form clots to stop bleeding. Platelet donation is done through a process called apheresis, where only platelets are collected and the rest of the blood is returned to the donor.</p>
+
+            <h6><strong>Who can donate?</strong></h6>
+            <p>Generally healthy males aged 18–60, weighing over 60kg.</p>
+
+            <h6><strong>Used For?</strong></h6>
+            <p>Patients undergoing chemotherapy, organ transplants, or major surgeries.</p>
+
+            <h6><strong>Donation Time?</strong></h6>
+            <p>Usually 45–90 minutes depending on your platelet count.</p>
+
+            <h6><strong>Donation Frequency?</strong></h6>
+            <p>Every 7 days, up to 24 times per year.</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="Platelet.png" alt="Platelets" class="img-fluid rounded-3 shadow-sm donation-img">
+            <br>
+            <br>
+            <img src="platelet1.png" alt="Platelets" class="img-fluid rounded-3 shadow-sm donation-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="scroll-wrapper py-5">
+  <div class="scroll-track d-flex">
+    <div class="card marquee-card shadow-sm" *ngFor="let card of cards">
+      <div class="card-body text-center">
+        <h5 class="card-title mt-2">{{ card.title }}</h5>
+        <p class="card-text">{{ card.subtitle }}</p>
+      </div>
+    </div>
+
+    <div class="card marquee-card shadow-sm" *ngFor="let card of cards">
+      <div class="card-body text-center">
+        <h5 class="card-title mt-2">{{ card.title }}</h5>
+        <p class="card-text">{{ card.subtitle }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
